@@ -2,25 +2,33 @@ import React, { Component } from 'react';
 import Map from 'pigeon-maps'
 import Marker from 'pigeon-marker'
 
-const markers = [
-  {
-    name: 'Kottbusser Tor',
-    latlng: [38.9072, -77.0369]
-  }
-]
-
-
 class PigeonMap extends Component {
+  constructor(props) {
+    super(props)
+    this.state={
+      events: {}
+  }}
 
   onMarkerClick(e) {
     console.log(e.payload)
   }
 
   render(){
+    var PigeonMarkers
 
-    const PigeonMarkers = markers.map(marker => (
-      <Marker key={`marker_${marker.name}`} anchor={marker.latlng} payload={marker.name} onClick={this.onMarkerClick} />
-    ));
+    if (this.props.day.events){
+      PigeonMarkers = this.props.day.events.map((event) => {
+        console.log(Object.values(event.position))
+        return(
+              <Marker
+                key={`marker_${event.name}`}
+                anchor={Object.values(event.position)}
+                payload={event.name}
+                onClick={this.onMarkerClick}
+              /> 
+      )})
+    }
+
 
     return(
       <div className="map">

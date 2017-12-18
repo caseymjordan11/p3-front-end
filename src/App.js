@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import {
-  Router,
+  BrowserRouter as Router,
+  Route,
   Redirect,
   Link
 } from 'react-router-dom'
 import './App.css';
+import NavItem from './NavItem'
+
 
 class App extends Component {
 
@@ -12,13 +15,12 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <nav>
-            <Link to="home" img="logo"></Link>
-            <h1>SocialFit</h1>
-            <Link to=""></Link>
+          <NavItem />
+          <main>
 
-          </nav>
-
+            {/* calendar
+             map */}
+          </main>
         </div>
       </Router>
     );

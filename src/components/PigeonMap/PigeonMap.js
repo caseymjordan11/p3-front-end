@@ -25,7 +25,7 @@ class PigeonMap extends Component {
                 anchor={Object.values(event.position)}
                 payload={event.name}
                 onClick={this.onMarkerClick}
-              /> 
+              />
       )})
     }
 

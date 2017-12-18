@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"
+
+import "./Sidebar.js"
 
 class App extends Component {
   render() {
     return (
-
-        <div>
-          <h1>Hello World</h1>
-        </div>
-
-    );
+      <div>
+        <Sidebar />
+      </div>
+    )
   }
 }
 
-export default App;
+export default App

@@ -5,7 +5,7 @@ class Event extends Component {
     super(props)
   }
   render() {
-    return <div className="Event">{this.props.event.name}</div>
+    return <div>{this.props.event.name}</div>
   }
 }
 

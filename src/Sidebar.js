@@ -37,7 +37,7 @@ class Sidebar extends Component {
           date: date,
           list: false
         })
-        console.log(err)
+        console.log("No Events Found")
       })
   }
 
@@ -46,7 +46,6 @@ class Sidebar extends Component {
       <div>
         <DatePicker
           inline
-          fixedHeight
           selected={this.state.date}
           onChange={this.handleChange}
         />

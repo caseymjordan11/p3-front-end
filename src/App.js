@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {
+  Router,
+  Redirect,
+  Link
+} from 'react-router-dom'
 import './App.css';
 
 class App extends Component {
+
   render() {
     return (
-
+      <Router>
         <div>
-          <h1>Hello World</h1>
-        </div>
+          <nav>
+            <Link to="home" img="logo"></Link>
+            <h1>SocialFit</h1>
+            <Link to=""></Link>
 
+          </nav>
+
+        </div>
+      </Router>
     );
   }
 }

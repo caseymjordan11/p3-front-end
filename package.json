@@ -4,29 +4,14 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
-<<<<<<< HEAD
     "moment": "^2.20.0",
-=======
-    "google-map-react": "^0.25.0",
-    "google-maps-react": "^1.1.2",
-    "leaflet": "^1.2.0",
-    "leaflet-map": "^0.2.1",
     "pigeon-maps": "^0.9.2",
     "pigeon-marker": "^0.3.3",
->>>>>>> bbe337da52034f975b08264b22a4376b4452ecc5
     "react": "^16.2.0",
     "react-datepicker": "^0.64.0",
     "react-dom": "^16.2.0",
-<<<<<<< HEAD
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17"
-=======
-    "react-google-maps": "^9.4.3",
-    "react-leaflet": "^1.7.8",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17",
-    "recompose": "^0.26.0"
->>>>>>> bbe337da52034f975b08264b22a4376b4452ecc5
   },
   "scripts": {
     "start": "react-scripts start",

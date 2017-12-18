@@ -7,7 +7,8 @@ import {
 } from 'react-router-dom'
 import './App.css';
 import NavItem from './NavItem'
-
+import MapItem from './MapItem'
+import CreateEvent from './CreateEvent'
 
 class App extends Component {
 
@@ -16,11 +17,7 @@ class App extends Component {
       <Router>
         <div>
           <NavItem />
-          <main>
-
-            {/* calendar
-             map */}
-          </main>
+          <MapItem />
         </div>
       </Router>
     );

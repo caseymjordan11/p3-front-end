@@ -2,20 +2,27 @@ import React, { Component } from 'react'
 import './App.css'
 import {
   BrowserRouter as Router,
-  Link,
   Switch,
   Route
 } from 'react-router-dom'
-import axios from 'axios'
+import PigeonMap from '../PigeonMap/PigeonMap'
 
 class App extends Component {
   render() {
     return (
-
-        <div>
-          <h1>Hello World</h1>
-        </div>
-
+      <Router>
+        <Switch>
+          <Route
+            exact path="/map"
+            render={() => {
+              return(
+                <PigeonMap
+                />
+              )
+            }}
+          />
+        </Switch>
+      </Router>
     );
   }
 }

@@ -9,6 +9,7 @@ import "./App.css"
 import PigeonMap from "./PigeonMap"
 import Sidebar from "./Sidebar"
 import NavItem from "./NavItem"
+import Geocode from "./Geocode"
 import EventShow from "./EventShow"
 
 class App extends Component {
@@ -71,6 +72,7 @@ class App extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <Switch>
         <div>
           <NavItem />
@@ -94,6 +96,28 @@ class App extends Component {
                 showOneEvent={this.showOneEvent}
               />
               <EventShow event={this.state.currentEvent} />
+=======
+      <Router>
+        <Switch>
+          <div>
+            <NavItem />
+            <div className="App-column">
+              <div>
+                <DatePicker
+                  inline
+                  selected={this.state.date}
+                  onChange={this.handleChange}
+                />
+                <Sidebar
+                  list={this.state.list}
+                  handleChange={this.handleChange}
+                  makeNewEvent={this.makeNewEvent}
+                  data={this.state.data}
+                />
+              </div>
+              <PigeonMap data={this.state.data} />
+              <Geocode />
+>>>>>>> cb01c3b3c6e1975fcc9e9f530d26fcaf10789460
             </div>
           </div>
         </div>

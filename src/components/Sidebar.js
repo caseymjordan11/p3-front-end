@@ -13,11 +13,11 @@ class Sidebar extends Component {
     return (
       <div>
         {this.props.list ? (
-          <EventList events={this.props.events} date={this.props.date} />
+          <EventList events={this.props.events} />
         ) : (
           <EventNew
-            date={this.props.date}
             handleChange={this.props.handleChange}
+            makeNewEvent={this.props.makeNewEvent}
           />
         )}
       </div>

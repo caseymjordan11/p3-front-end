@@ -1,11 +1,12 @@
 import React, { Component } from "react"
-import "./App.css"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import axios from "axios"
-import moment from "moment"
 import DatePicker from "react-datepicker"
-import PigeonMap from "../PigeonMap/PigeonMap"
-import Sidebar from "../../Sidebar"
+import moment from "moment"
+
+import PigeonMap from "./PigeonMap"
+import Sidebar from "./Sidebar"
+import NavItem from "./NavItem"
 
 class App extends Component {
   constructor(props) {
@@ -20,9 +21,9 @@ class App extends Component {
   }
 
   handleChange(date) {
-    let fullDate = `${date.month() + 1}-${date.date()}-${date.year()}`
+    let sendDate = `${date.month() + 1}-${date.date()}-${date.year()}`
     axios
-      .get(`http://localhost:3001/api/${fullDate}`)
+      .get(`http://localhost:3001/api/${sendDate}`)
       .then(res => {
         this.setState({
           date: date,
@@ -40,6 +41,28 @@ class App extends Component {
       })
   }
 
+  makeNewEvent(e, name, description) {
+    e.preventDefault()
+
+    let sendDate = `${this.state.date.month() +
+      1}-${this.state.date.date()}-${this.state.date.year()}`
+    axios
+      .post(`http://localhost:3001/api/${sendDate}/new-event`, {
+        name: name,
+        description: description
+        // time: this.state.time
+      })
+      .then(res => {
+        console.log(res.data.events)
+        this.props.handleChange(this.props.date)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  editOldEvent() {}
+
   render() {
     return (
       <Router>
@@ -50,16 +73,19 @@ class App extends Component {
             render={() => {
               return (
                 <div>
+                  <NavItem />
                   <DatePicker
                     inline
                     selected={this.state.date}
                     onChange={this.handleChange}
                   />
                   <Sidebar
-                    events={this.state.data.events}
+                    list={this.state.list}
                     handleChange={this.handleChange}
+                    makeNewEvent={this.makeNewEvent}
+                    // events={this.state.data.events}
                   />
-                  <PigeonMap data={this.state.data} />
+                  {/* <PigeonMap data={this.state.data} /> */}
                 </div>
               )
             }}

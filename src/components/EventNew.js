@@ -11,29 +11,9 @@ class EventNew extends Component {
       time: ""
     }
 
-    this.makeNewEvent = this.makeNewEvent.bind(this)
+    // this.makeNewEvent = this.makeNewEvent.bind(this)
     this.updateName = this.updateName.bind(this)
     this.updateDescription = this.updateDescription.bind(this)
-  }
-
-  makeNewEvent(e) {
-    e.preventDefault()
-
-    let fullDate = `${this.props.date.month() +
-      1}-${this.props.date.date()}-${this.props.date.year()}`
-    axios
-      .post(`http://localhost:3001/api/${fullDate}/new-event`, {
-        name: this.state.name,
-        description: this.state.description,
-        time: this.state.time
-      })
-      .then(res => {
-        console.log(res.data.events)
-        this.props.handleChange(this.props.date)
-      })
-      .catch(err => {
-        console.log(err)
-      })
   }
 
   updateName(e) {
@@ -52,7 +32,10 @@ class EventNew extends Component {
     return (
       <div>
         <h4>Create an Event</h4>
-        <form onSubmit={this.makeNewEvent}>
+        <form
+          onSubmit={e =>
+            this.props.makeNewEvent(this.state.name, this.state.description)}
+        >
           <p>
             <input
               type="text"

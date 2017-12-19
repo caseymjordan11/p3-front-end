@@ -13,7 +13,6 @@ class PigeonMap extends Component {
   }
 
   render() {
-    console.log(this.props.data)
     var PigeonMarkers
 
     if (this.props.data) {

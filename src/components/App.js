@@ -9,7 +9,6 @@ import "./App.css"
 import PigeonMap from "./PigeonMap"
 import Sidebar from "./Sidebar"
 import NavItem from "./NavItem"
-import Geocode from "./Geocode"
 import EventShow from "./EventShow"
 
 class App extends Component {
@@ -44,16 +43,18 @@ class App extends Component {
       })
   }
 
-  makeNewEvent(e, name, description) {
-    e.preventDefault()
+  makeNewEvent(name, description, position) {
+    console.log(name)
+    console.log(description)
+    console.log(position)
 
     let sendDate = `${this.state.date.month() +
       1}-${this.state.date.date()}-${this.state.date.year()}`
     axios
       .post(`http://localhost:3001/api/${sendDate}/new-event`, {
         name: name,
-        description: description
-        // time: this.state.time
+        description: description,
+        position: position
       })
       .then(res => {
         console.log(res.data.events)
@@ -72,7 +73,6 @@ class App extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <Switch>
         <div>
           <NavItem />
@@ -96,28 +96,6 @@ class App extends Component {
                 showOneEvent={this.showOneEvent}
               />
               <EventShow event={this.state.currentEvent} />
-=======
-      <Router>
-        <Switch>
-          <div>
-            <NavItem />
-            <div className="App-column">
-              <div>
-                <DatePicker
-                  inline
-                  selected={this.state.date}
-                  onChange={this.handleChange}
-                />
-                <Sidebar
-                  list={this.state.list}
-                  handleChange={this.handleChange}
-                  makeNewEvent={this.makeNewEvent}
-                  data={this.state.data}
-                />
-              </div>
-              <PigeonMap data={this.state.data} />
-              <Geocode />
->>>>>>> cb01c3b3c6e1975fcc9e9f530d26fcaf10789460
             </div>
           </div>
         </div>

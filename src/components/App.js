@@ -59,7 +59,7 @@ class App extends Component {
       })
   }
 
-  editOldEvent() {}
+  showEventDetails(event) {}
 
   render() {
     return (
@@ -81,7 +81,7 @@ class App extends Component {
                   data={this.state.data}
                 />
               </div>
-              <div>{/* <PigeonMap data={this.state.data} /> */}</div>
+              <PigeonMap data={this.state.data} />
             </div>
           </div>
           ) }}

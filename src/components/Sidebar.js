@@ -27,7 +27,7 @@ class Sidebar extends Component {
         <Route
           path="/home"
           render={props => {
-            return <EventList events={this.props.data} />
+            return <EventList {...props} events={this.props.data} />
           }}
         />
       </div>

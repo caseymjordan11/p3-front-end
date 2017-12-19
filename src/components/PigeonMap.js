@@ -6,7 +6,7 @@ class PigeonMap extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      events: {},
+      events: [],
       name: "",
       time: "",
       participants: []
@@ -20,13 +20,14 @@ class PigeonMap extends Component {
       time: e.payload[2],
       participants: e.payload[1]
     })
-}
+  }
 
   render() {
+    console.log(this.props.data)
     var PigeonMarkers
 
-    if (this.props.data.events) {
-      PigeonMarkers = this.props.data.events.map(event => {
+    if (this.props.data) {
+      PigeonMarkers = this.props.data.map(event => {
         return (
           <Marker
             key={`marker_${event.name}`}
@@ -45,6 +46,7 @@ class PigeonMap extends Component {
           height={600}
           defaultCenter={[38.9072, -77.0369]}
           defaultZoom={13}
+          zoomOnMouseWheel={false}
         >
           {PigeonMarkers}
         </Map>
@@ -52,7 +54,6 @@ class PigeonMap extends Component {
           <h1>{this.state.name}</h1>
           <h3>{this.state.time}</h3>
           <p>{this.state.participants}</p>
-
         </div>
       </div>
     )

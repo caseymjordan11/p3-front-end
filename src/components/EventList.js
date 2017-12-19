@@ -10,7 +10,7 @@ class EventList extends Component {
     return (
       <div>
         <h4>Events</h4>
-        {!this.props.events ? (
+        {!this.props.events.length ? (
           <p>None</p>
         ) : (
           this.props.events.map((event, key) => (

@@ -27,6 +27,12 @@
   flex-direction: row;
   justify-content: space-around;
 }
+.App-body {
+  background-color: #e2e2e2;
+}
+.map {
+  border: 2px solid #bbb;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

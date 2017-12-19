@@ -9,6 +9,7 @@ import "./App.css"
 import PigeonMap from "./PigeonMap"
 import Sidebar from "./Sidebar"
 import NavItem from "./NavItem"
+import Footer from "./Footer"
 
 class App extends Component {
   constructor(props) {
@@ -74,7 +75,7 @@ class App extends Component {
             path="/home"
             render={() => {
               return (
-                <div>
+                <div className="App-body">
                   <NavItem />
                   <div className="App-column">
                     <div>
@@ -93,6 +94,9 @@ class App extends Component {
                     <div>
                       <PigeonMap data={this.state.data} />
                     </div>
+                  </div>
+                  <div>
+                    <Footer />
                   </div>
                 </div>
               )

@@ -34,7 +34,7 @@ class PigeonMap extends Component {
     return (
       <div className="map">
         <Map
-          width={window.innerWidth}
+          width={800}
           height={600}
           defaultCenter={[38.9072, -77.0369]}
           defaultZoom={13}

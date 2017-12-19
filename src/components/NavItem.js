@@ -36,7 +36,7 @@ const NavItem = ({}) => {
             <Link to="/home">Home</Link>
           </li>
           <li style={liStyle}>
-            <Link to="/createEvent">CreateEvent</Link>
+            <Link to="/new-event">New Event</Link>
           </li>
         </ul>
       </nav>

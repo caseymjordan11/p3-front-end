@@ -12,8 +12,8 @@ class Sidebar extends Component {
   render() {
     return (
       <div>
-        {this.props.list ? (
-          <EventList events={this.props.events} />
+        {this.props.data ? (
+          <EventList events={this.props.data.events} />
         ) : (
           <EventNew
             handleChange={this.props.handleChange}

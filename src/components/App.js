@@ -4,6 +4,8 @@ import axios from "axios"
 import DatePicker from "react-datepicker"
 import moment from "moment"
 
+import "./App.css"
+
 import PigeonMap from "./PigeonMap"
 import Sidebar from "./Sidebar"
 import NavItem from "./NavItem"
@@ -72,8 +74,13 @@ class App extends Component {
             path="/home"
             render={() => {
               return (
+<<<<<<< HEAD:src/components/App.js
                 <div>
                   <NavItem />
+=======
+                <div class="App-column">
+                  <div>
+>>>>>>> f80d14126b9cb01f8fa1433d5ae5cdedd785fae6:src/components/App/App.js
                   <DatePicker
                     inline
                     selected={this.state.date}
@@ -85,7 +92,14 @@ class App extends Component {
                     makeNewEvent={this.makeNewEvent}
                     // events={this.state.data.events}
                   />
+<<<<<<< HEAD:src/components/App.js
                   {/* <PigeonMap data={this.state.data} /> */}
+=======
+                  </div>
+                  <div>
+                  <PigeonMap data={this.state.data} />
+                  </div>
+>>>>>>> f80d14126b9cb01f8fa1433d5ae5cdedd785fae6:src/components/App/App.js
                 </div>
               )
             }}

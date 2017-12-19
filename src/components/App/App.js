@@ -49,7 +49,8 @@ class App extends Component {
             path="/home"
             render={() => {
               return (
-                <div>
+                <div class="App-column">
+                  <div>
                   <DatePicker
                     inline
                     selected={this.state.date}
@@ -59,7 +60,10 @@ class App extends Component {
                     events={this.state.data.events}
                     handleChange={this.handleChange}
                   />
+                  </div>
+                  <div>
                   <PigeonMap data={this.state.data} />
+                  </div>
                 </div>
               )
             }}

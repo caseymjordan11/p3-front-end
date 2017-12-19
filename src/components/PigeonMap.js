@@ -5,12 +5,6 @@ import Marker from "pigeon-marker"
 class PigeonMap extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      events: [],
-      name: "",
-      time: "",
-      participants: []
-    }
     this.onMarkerClick = this.onMarkerClick.bind(this)
   }
 

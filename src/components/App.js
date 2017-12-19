@@ -9,6 +9,7 @@ import "./App.css"
 import PigeonMap from "./PigeonMap"
 import Sidebar from "./Sidebar"
 import NavItem from "./NavItem"
+import Geocode from "./Geocode"
 
 class App extends Component {
   constructor(props) {
@@ -82,6 +83,7 @@ class App extends Component {
                 />
               </div>
               <PigeonMap data={this.state.data} />
+              <Geocode />
             </div>
           </div>
           ) }}

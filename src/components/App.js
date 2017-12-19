@@ -87,7 +87,7 @@ class App extends Component {
                         list={this.state.list}
                         handleChange={this.handleChange}
                         makeNewEvent={this.makeNewEvent}
-                        // events={this.state.data.events}
+                        data={this.state.data}
                       />
                     </div>
                     <div>

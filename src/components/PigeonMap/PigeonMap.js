@@ -6,25 +6,32 @@ class PigeonMap extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      events: {}
+      events: {},
+      name: "",
+      time: "",
+      participants: []
     }
+    this.onMarkerClick = this.onMarkerClick.bind(this)
   }
 
   onMarkerClick(e) {
-    console.log(e.payload)
-  }
+    this.setState({
+      name: e.payload[0],
+      time: e.payload[2],
+      participants: e.payload[1]
+    })
+}
 
   render() {
     var PigeonMarkers
 
     if (this.props.data.events) {
       PigeonMarkers = this.props.data.events.map(event => {
-        console.log(Object.values(event.position))
         return (
           <Marker
             key={`marker_${event.name}`}
             anchor={Object.values(event.position)}
-            payload={event.name}
+            payload={[event.name, event.participants, event.time]}
             onClick={this.onMarkerClick}
           />
         )
@@ -41,6 +48,12 @@ class PigeonMap extends Component {
         >
           {PigeonMarkers}
         </Map>
+        <div>
+          <h1>{this.state.name}</h1>
+          <h3>{this.state.time}</h3>
+          <p>{this.state.participants}</p>
+
+        </div>
       </div>
     )
   }

@@ -11,7 +11,6 @@ class EventNew extends Component {
       time: ""
     }
 
-    // this.makeNewEvent = this.makeNewEvent.bind(this)
     this.updateName = this.updateName.bind(this)
     this.updateDescription = this.updateDescription.bind(this)
   }

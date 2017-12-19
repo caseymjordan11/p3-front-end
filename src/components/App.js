@@ -16,8 +16,7 @@ class App extends Component {
 
     this.state = {
       date: moment(),
-      list: false,
-      data: {}
+      data: []
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -29,17 +28,14 @@ class App extends Component {
       .then(res => {
         this.setState({
           date: date,
-          list: true,
-          data: res.data
+          data: res.data.events
         })
-        console.log(res.data.events)
       })
       .catch(err => {
         this.setState({
           date: date,
-          list: false
+          data: []
         })
-        console.log("No Events Found")
       })
   }
 
@@ -69,35 +65,26 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route
-            exact
-            path="/home"
-            render={() => {
-              return (
-                <div>
-                  <NavItem />
-                  <div className="App-column">
-                    <div>
-                      <DatePicker
-                        inline
-                        selected={this.state.date}
-                        onChange={this.handleChange}
-                      />
-                      <Sidebar
-                        list={this.state.list}
-                        handleChange={this.handleChange}
-                        makeNewEvent={this.makeNewEvent}
-                        data={this.state.data}
-                      />
-                    </div>
-                    <div>
-                      <PigeonMap data={this.state.data} />
-                    </div>
-                  </div>
-                </div>
-              )
-            }}
-          />
+          <div>
+            <NavItem />
+            <div className="App-column">
+              <div>
+                <DatePicker
+                  inline
+                  selected={this.state.date}
+                  onChange={this.handleChange}
+                />
+                <Sidebar
+                  list={this.state.list}
+                  handleChange={this.handleChange}
+                  makeNewEvent={this.makeNewEvent}
+                  data={this.state.data}
+                />
+              </div>
+              <div>{/* <PigeonMap data={this.state.data} /> */}</div>
+            </div>
+          </div>
+          ) }}
         </Switch>
       </Router>
     )

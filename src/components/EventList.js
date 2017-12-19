@@ -11,7 +11,7 @@ class EventList extends Component {
       <div>
         <h4>Events</h4>
         {!this.props.events ? (
-          <p>No Events</p>
+          <p>None</p>
         ) : (
           this.props.events.map((event, key) => (
             <Event key={key} event={event} />

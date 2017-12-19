@@ -5,6 +5,7 @@ class Event extends Component {
     super(props)
   }
   render() {
+    console.log(this.props.event)
     return <div>{this.props.event.name}</div>
   }
 }

@@ -15,11 +15,7 @@ class PigeonMap extends Component {
   }
 
   onMarkerClick(e) {
-    this.setState({
-      name: e.payload[0],
-      time: e.payload[2],
-      participants: e.payload[1]
-    })
+    this.props.showOneEvent(e.payload[0])
   }
 
   render() {
@@ -32,7 +28,7 @@ class PigeonMap extends Component {
           <Marker
             key={`marker_${event.name}`}
             anchor={Object.values(event.position)}
-            payload={[event.name, event.participants, event.time]}
+            payload={[event]}
             onClick={this.onMarkerClick}
           />
         )
@@ -50,11 +46,6 @@ class PigeonMap extends Component {
         >
           {PigeonMarkers}
         </Map>
-        <div>
-          <h1>{this.state.name}</h1>
-          <h3>{this.state.time}</h3>
-          <p>{this.state.participants}</p>
-        </div>
       </div>
     )
   }

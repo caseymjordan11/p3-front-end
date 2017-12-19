@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { Switch, Route } from "react-router-dom"
 import axios from "axios"
 import DatePicker from "react-datepicker"
 import moment from "moment"
@@ -9,6 +9,7 @@ import "./App.css"
 import PigeonMap from "./PigeonMap"
 import Sidebar from "./Sidebar"
 import NavItem from "./NavItem"
+import EventShow from "./EventShow"
 
 class App extends Component {
   constructor(props) {
@@ -16,9 +17,12 @@ class App extends Component {
 
     this.state = {
       date: moment(),
-      data: []
+      data: [],
+      currentEvent: {}
     }
     this.handleChange = this.handleChange.bind(this)
+    this.makeNewEvent = this.makeNewEvent.bind(this)
+    this.showOneEvent = this.showOneEvent.bind(this)
   }
 
   handleChange(date) {
@@ -59,34 +63,42 @@ class App extends Component {
       })
   }
 
-  showEventDetails(event) {}
+  showOneEvent(event) {
+    this.setState({
+      currentEvent: event
+    })
+  }
 
   render() {
     return (
-      <Router>
-        <Switch>
-          <div>
-            <NavItem />
-            <div className="App-column">
-              <div>
-                <DatePicker
-                  inline
-                  selected={this.state.date}
-                  onChange={this.handleChange}
-                />
-                <Sidebar
-                  list={this.state.list}
-                  handleChange={this.handleChange}
-                  makeNewEvent={this.makeNewEvent}
-                  data={this.state.data}
-                />
-              </div>
-              <PigeonMap data={this.state.data} />
+      <Switch>
+        <div>
+          <NavItem />
+          <div className="App-column">
+            <div>
+              <DatePicker
+                inline
+                selected={this.state.date}
+                onChange={this.handleChange}
+              />
+              <Sidebar
+                list={this.state.list}
+                handleChange={this.handleChange}
+                makeNewEvent={this.makeNewEvent}
+                data={this.state.data}
+              />
+            </div>
+            <div>
+              <PigeonMap
+                data={this.state.data}
+                showOneEvent={this.showOneEvent}
+              />
+              <EventShow event={this.state.currentEvent} />
             </div>
           </div>
-          ) }}
-        </Switch>
-      </Router>
+        </div>
+        ) }}
+      </Switch>
     )
   }
 }

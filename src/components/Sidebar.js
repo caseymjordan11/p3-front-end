@@ -46,7 +46,6 @@ class Sidebar extends Component {
   render() {
     return (
       <div>
-        <h4>{this.state.updateForm ? "Update Event" : "Create Event"}</h4>
         <Switch>
           <Route
             path="/modify-event"

@@ -54,8 +54,7 @@ class Sidebar extends Component {
               return (
                 <EventForm
                   updateForm={true}
-                  position={this.state.position}
-                  handleForm={this.props.editOneEvent}
+                  editOneEvent={this.props.editOneEvent}
                   toggleFalse={this.toggleFalse}
                   currentEvent={this.props.currentEvent}
                 />
@@ -71,7 +70,7 @@ class Sidebar extends Component {
                 <EventForm
                   updateForm={false}
                   position={this.state.position}
-                  handleForm={this.props.makeNewEvent}
+                  makeNewEvent={this.props.makeNewEvent}
                   toggleFalse={this.toggleFalse}
                 />
               )

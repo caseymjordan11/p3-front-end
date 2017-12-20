@@ -14,7 +14,7 @@ class PigeonMap extends Component {
 
   render() {
     var PigeonMarkers
-
+    console.log(this.props.data)
     if (this.props.data) {
       PigeonMarkers = this.props.data.map(event => {
         return (

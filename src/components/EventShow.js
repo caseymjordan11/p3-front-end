@@ -13,9 +13,11 @@ class EventShow extends Component {
         <h3>{this.props.event.name}</h3>
         <p>{this.props.event.time}</p>
         <p>{this.props.event.description}</p>
-        <form onSubmit={this.props.killOneEvent}>
-          <button type="submit">Delete</button>
-        </form>
+        {this.props.event.name && (
+          <form onSubmit={this.props.killOneEvent}>
+            <button type="submit">Delete</button>
+          </form>
+        )}
       </div>
     )
   }

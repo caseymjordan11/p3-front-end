@@ -18,6 +18,7 @@ class Sidebar extends Component {
       }
     }
     this.setLocation = this.setLocation.bind(this)
+    this.toggleFalse = this.toggleFalse.bind(this)
   }
 
   setLocation(lat, lng) {
@@ -27,6 +28,12 @@ class Sidebar extends Component {
         lat: lat,
         lng: lng
       }
+    })
+  }
+
+  toggleFalse() {
+    this.setState({
+      location: false
     })
   }
 
@@ -44,6 +51,7 @@ class Sidebar extends Component {
                   position={this.state.position}
                   handleChange={this.props.handleChange}
                   makeNewEvent={this.props.makeNewEvent}
+                  toggleFalse={this.toggleFalse}
                 />
               )
             }}

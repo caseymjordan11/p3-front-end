@@ -83,7 +83,7 @@ class App extends Component {
           .currentEvent._id}`
       )
       .then(res => {
-        console.log(res)
+        this.forceUpdate()
       })
       .catch(err => {
         console.log(err)

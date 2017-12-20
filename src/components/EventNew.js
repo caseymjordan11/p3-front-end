@@ -36,6 +36,7 @@ class EventNew extends Component {
         <form
           onSubmit={e => {
             e.preventDefault()
+            this.props.toggleFalse()
             this.props.makeNewEvent(
               this.state.name,
               this.state.description,

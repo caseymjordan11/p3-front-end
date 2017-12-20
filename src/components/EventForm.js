@@ -39,7 +39,6 @@ class EventForm extends Component {
         participants: this.props.currentEvent.participants
       })
     }
-    console.log(this.props.event)
   }
 
   render() {
@@ -50,6 +49,7 @@ class EventForm extends Component {
           onSubmit={e => {
             e.preventDefault()
             this.props.toggleFalse()
+
             if(!this.props.updateForm) {
               this.props.newEvent(
                 this.state.name,
@@ -60,7 +60,7 @@ class EventForm extends Component {
               this.props.editEvent(
                 this.state.name,
                 this.state.description,
-                this.props.currentEvent.position
+                this.props.position
               )
             }
           }}

@@ -12,6 +12,7 @@ class PigeonMap extends Component {
     this.props.showOneEvent(e.payload[0])
   }
 
+
   render() {
     var PigeonMarkers
     console.log(this.props.data)

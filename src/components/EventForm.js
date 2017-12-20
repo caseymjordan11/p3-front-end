@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
 import Geocode from "./Geocode"
+import "./EventShow.css"
 
 class EventForm extends Component {
   constructor(props) {

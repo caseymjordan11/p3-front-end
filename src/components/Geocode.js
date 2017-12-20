@@ -5,13 +5,10 @@ class Geocode extends Component {
   constructor() {
     super()
     this.state = {
-      address: "",
       street: "",
       city: "",
       state: "",
-      zipcode: "",
-      lat: "",
-      lng: ""
+      zipcode: ""
     }
   }
 
@@ -50,11 +47,7 @@ class Geocode extends Component {
         {}
       )
       .then(response => {
-        // this.setState({
-        // lat: response["data"]["results"]["0"]["geometry"]["location"]["lat"],
-        // lng: response["data"]["results"]["0"]["geometry"]["location"]["lng"]
-        // })
-        this.props.updatePosition(
+        this.props.setLocation(
           response["data"]["results"]["0"]["geometry"]["location"]["lat"],
           response["data"]["results"]["0"]["geometry"]["location"]["lng"]
         )
@@ -67,18 +60,35 @@ class Geocode extends Component {
   render() {
     return (
       <div>
-        <h2>Search:</h2>
+        <h4> Set Location </h4>
         <form onSubmit={e => this.handleSubmit(e)}>
-          <p>Search Stock</p>
           <p>
-            <label>Street Address:</label>
-            <textarea onChange={e => this.handleStreetInput(e)} />
-            <label>City:</label>
-            <textarea onChange={e => this.handleCityInput(e)} />
-            <label>State:</label>
-            <textarea onChange={e => this.handleStateInput(e)} />
-            <label>Zipcode:</label>
-            <textarea onChange={e => this.handleZipcodeInput(e)} />
+            <input
+              type="text"
+              placeholder="address"
+              onChange={e => this.handleStreetInput(e)}
+            />
+          </p>
+          <p>
+            <input
+              type="text"
+              placeholder="city"
+              onChange={e => this.handleCityInput(e)}
+            />
+          </p>
+          <p>
+            <input
+              type="text"
+              placeholder="state"
+              onChange={e => this.handleStateInput(e)}
+            />
+          </p>
+          <p>
+            <input
+              type="text"
+              placeholder="zipcode"
+              onChange={e => this.handleZipcodeInput(e)}
+            />
           </p>
           <input type="submit" value="Submit" />
         </form>

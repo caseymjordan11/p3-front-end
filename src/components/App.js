@@ -23,6 +23,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.makeNewEvent = this.makeNewEvent.bind(this)
     this.showOneEvent = this.showOneEvent.bind(this)
+    this.killOneEvent = this.killOneEvent.bind(this)
   }
 
   handleChange(date) {
@@ -58,7 +59,7 @@ class App extends Component {
       })
       .then(res => {
         console.log(res.data.events)
-        this.props.handleChange(this.props.date)
+        this.handleChange(this.state.date)
       })
       .catch(err => {
         console.log(err)
@@ -69,6 +70,24 @@ class App extends Component {
     this.setState({
       currentEvent: event
     })
+  }
+
+  killOneEvent(e) {
+    e.preventDefault()
+    let sendDate = `${this.state.date.month() +
+      1}-${this.state.date.date()}-${this.state.date.year()}`
+
+    axios
+      .delete(
+        `http://localhost:3001/api/${sendDate}/remove-event/${this.state
+          .currentEvent._id}`
+      )
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   render() {
@@ -95,7 +114,10 @@ class App extends Component {
                 data={this.state.data}
                 showOneEvent={this.showOneEvent}
               />
-              <EventShow event={this.state.currentEvent} />
+              <EventShow
+                event={this.state.currentEvent}
+                killOneEvent={this.killOneEvent}
+              />
             </div>
           </div>
         </div>

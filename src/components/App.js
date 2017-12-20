@@ -24,6 +24,7 @@ class App extends Component {
     this.makeNewEvent = this.makeNewEvent.bind(this)
     this.showOneEvent = this.showOneEvent.bind(this)
     this.killOneEvent = this.killOneEvent.bind(this)
+    this.editOneEvent = this.editOneEvent.bind(this)
   }
 
   handleChange(date) {
@@ -45,10 +46,6 @@ class App extends Component {
   }
 
   makeNewEvent(name, description, position) {
-    console.log(name)
-    console.log(description)
-    console.log(position)
-
     let sendDate = `${this.state.date.month() +
       1}-${this.state.date.date()}-${this.state.date.year()}`
     axios
@@ -58,8 +55,32 @@ class App extends Component {
         position: position
       })
       .then(res => {
-        console.log(res.data.events)
         this.handleChange(this.state.date)
+        // this.forceUpdate()
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  editOneEvent(name, description, position) {
+    let sendDate = `${this.state.date.month() +
+      1}-${this.state.date.date()}-${this.state.date.year()}`
+
+    axios
+      .put(
+        `http://localhost:3001/api/${sendDate}/modify-event/${this.state
+          .currentEvent._id}`,
+        {
+          name: name,
+          description: description,
+          position: position
+        }
+      )
+      .then(res => {
+        console.log(res)
+        this.handleChange(this.state.date)
+        // this.forceUpdate()
       })
       .catch(err => {
         console.log(err)
@@ -83,7 +104,8 @@ class App extends Component {
           .currentEvent._id}`
       )
       .then(res => {
-        this.forceUpdate()
+        // this.handleChange(this.state.date)
+        // this.forceUpdate()
       })
       .catch(err => {
         console.log(err)
@@ -106,7 +128,9 @@ class App extends Component {
                 list={this.state.list}
                 handleChange={this.handleChange}
                 makeNewEvent={this.makeNewEvent}
+                editNewEvent={this.editNewEvent}
                 data={this.state.data}
+                currentEvent={this.state.currentEvent}
               />
             </div>
             <div>

@@ -36,6 +36,17 @@ class Geocode extends Component {
     })
   }
 
+  componentWillMount() {
+    if (this.props.updateForm === true) {
+      this.setState({
+        name: this.props.event.name,
+        description: this.props.event.description,
+        time: this.props.event.time,
+        participants: this.props.event.participants
+      })
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault()
 

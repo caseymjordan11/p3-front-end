@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import EventList from "./EventList"
-import EventNew from "./EventNew"
+import EventForm from "./EventForm"
 import { Switch, Route } from "react-router-dom"
 import Geocode from "./Geocode"
 
@@ -42,15 +42,31 @@ class Sidebar extends Component {
       <div>
         <Switch>
           <Route
+            path="/modify-event"
+            render={props => {
+              return (
+                <EventForm
+                  updateForm={true}
+                  position={this.state.position}
+                  handleChange={this.props.handleChange}
+                  handleForm={this.props.editOneEvent}
+                  toggleFalse={this.toggleFalse}
+                  event={this.props.currentEvent}
+                />
+              )
+            }}
+          />
+          <Route
             path="/new-event"
             render={props => {
               return !this.state.location ? (
                 <Geocode setLocation={this.setLocation} />
               ) : (
-                <EventNew
+                <EventForm
+                  updateForm={false}
                   position={this.state.position}
                   handleChange={this.props.handleChange}
-                  makeNewEvent={this.props.makeNewEvent}
+                  handleForm={this.props.makeNewEvent}
                   toggleFalse={this.toggleFalse}
                 />
               )

@@ -2,14 +2,14 @@ import React, { Component } from "react"
 import axios from "axios"
 import Geocode from "./Geocode"
 
-class EventNew extends Component {
+class EventForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      name: "",
-      description: "",
-      time: "",
+      name: "name",
+      description: "description",
+      time: "time",
       participants: []
     }
 
@@ -29,6 +29,18 @@ class EventNew extends Component {
     })
   }
 
+  componentWillMount() {
+    if (this.props.updateForm === true) {
+      this.setState({
+        name: this.props.event.name,
+        description: this.props.event.description,
+        time: this.props.event.time,
+        participants: this.props.event.participants
+      })
+    }
+    console.log(this.props.event)
+  }
+
   render() {
     return (
       <div>
@@ -37,7 +49,7 @@ class EventNew extends Component {
           onSubmit={e => {
             e.preventDefault()
             this.props.toggleFalse()
-            this.props.makeNewEvent(
+            this.props.handleForm(
               this.state.name,
               this.state.description,
               this.props.position
@@ -48,7 +60,7 @@ class EventNew extends Component {
             <input
               type="text"
               name="name"
-              placeholder="name"
+              defaultValue={this.state.name}
               onChange={this.updateName}
             />
           </p>
@@ -56,12 +68,12 @@ class EventNew extends Component {
             <input
               type="text"
               name="description"
-              placeholder="description"
+              defaultValue={this.state.description}
               onChange={this.updateDescription}
             />
           </p>
           <p>
-            <input type="text" name="time" placeholder="time" />
+            <input type="text" name="time" defaultValue={this.state.time} />
           </p>
           <p>
             <input type="submit" value="Submit" />
@@ -72,4 +84,4 @@ class EventNew extends Component {
   }
 }
 
-export default EventNew
+export default EventForm

@@ -118,7 +118,6 @@ class App extends Component {
               />
             </div>
           </div>
-          <div class = "show">
           <EventShow
             event={this.state.currentEvent}
             killOneEvent={this.killOneEvent}

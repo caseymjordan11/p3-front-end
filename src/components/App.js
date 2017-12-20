@@ -96,30 +96,33 @@ class App extends Component {
         <div>
           <NavItem />
           <div className="App-column">
-            <div>
+            <div class ="leftSide">
               <DatePicker
                 inline
                 selected={this.state.date}
                 onChange={this.handleChange}
               />
+              <div class="sidebar">
               <Sidebar
                 list={this.state.list}
                 handleChange={this.handleChange}
                 makeNewEvent={this.makeNewEvent}
                 data={this.state.data}
               />
+              </div>
             </div>
             <div>
               <PigeonMap
                 data={this.state.data}
                 showOneEvent={this.showOneEvent}
               />
-              <EventShow
-                event={this.state.currentEvent}
-                killOneEvent={this.killOneEvent}
-              />
             </div>
           </div>
+          <div class = "show">
+          <EventShow
+            event={this.state.currentEvent}
+            killOneEvent={this.killOneEvent}
+          />
         </div>
         ) }}
       </Switch>

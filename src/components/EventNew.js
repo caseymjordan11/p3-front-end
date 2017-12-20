@@ -3,14 +3,14 @@ import axios from "axios"
 import Geocode from "./Geocode"
 import "./EventShow.css"
 
-class EventForm extends Component {
+class EventNew extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      name: "name",
-      description: "description",
-      time: "time",
+      name: "",
+      description: "",
+      time: "",
       participants: []
     }
 
@@ -30,18 +30,6 @@ class EventForm extends Component {
     })
   }
 
-  componentWillMount() {
-    if (this.props.updateForm === true) {
-      this.setState({
-        name: this.props.currentEvent.name,
-        description: this.props.currentEvent.description,
-        time: this.props.currentEvent.time,
-        participants: this.props.currentEvent.participants
-      })
-    }
-    console.log(this.props.event)
-  }
-
   render() {
     return (
       <div>
@@ -49,27 +37,18 @@ class EventForm extends Component {
         <form
           onSubmit={e => {
             e.preventDefault()
-            this.props.toggleFalse()
-            if(!this.props.updateForm) {
-              this.props.newEvent(
-                this.state.name,
-                this.state.description,
-                this.props.position
-              )
-            } else {
-              this.props.editEvent(
-                this.state.name,
-                this.state.description,
-                this.props.currentEvent.position
-              )
-            }
+            this.props.makeNewEvent(
+              this.state.name,
+              this.state.description,
+              this.props.position
+            )
           }}
         >
           <p>
             <input
               type="text"
               name="name"
-              defaultValue={this.state.name}
+              placeholder="name"
               onChange={this.updateName}
             />
           </p>
@@ -77,12 +56,12 @@ class EventForm extends Component {
             <input
               type="text"
               name="description"
-              defaultValue={this.state.description}
+              placeholder="description"
               onChange={this.updateDescription}
             />
           </p>
           <p>
-            <input type="text" name="time" defaultValue={this.state.time} />
+            <input type="text" name="time" placeholder="time" />
           </p>
           <p>
             <input type="submit" value="Submit" />
@@ -93,4 +72,4 @@ class EventForm extends Component {
   }
 }
 
-export default EventForm
+export default EventNew

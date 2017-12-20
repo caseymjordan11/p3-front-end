@@ -32,6 +32,7 @@ class App extends Component {
     axios
       .get(`http://localhost:3001/api/${sendDate}`)
       .then(res => {
+        console.log(res.data.events)
         this.setState({
           date: date,
           data: res.data.events
@@ -79,7 +80,7 @@ class App extends Component {
       )
       .then(res => {
         console.log(res)
-        this.handleChange(this.state.date)
+        // this.handleChange(this.state.date)
         // this.forceUpdate()
       })
       .catch(err => {
@@ -129,7 +130,7 @@ class App extends Component {
                 list={this.state.list}
                 handleChange={this.handleChange}
                 makeNewEvent={this.makeNewEvent}
-                editNewEvent={this.editNewEvent}
+                editOneEvent={this.editOneEvent}
                 data={this.state.data}
                 currentEvent={this.state.currentEvent}
               />

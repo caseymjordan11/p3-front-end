@@ -16,9 +16,9 @@ class EventShow extends Component {
         <p>{this.props.event.description}</p>
         {this.props.event.name && (
           <div>
-            <form action="/modify-event">
-              <input type="submit" value="Update" />
-            </form>
+            <Link to="/modify-event">
+              <button>Update</button>
+            </Link>
             <form onSubmit={this.props.killOneEvent}>
               <button type="submit">Delete</button>
             </form>

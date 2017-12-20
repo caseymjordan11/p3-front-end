@@ -36,17 +36,6 @@ class Geocode extends Component {
     })
   }
 
-  componentWillMount() {
-    if (this.props.updateForm === true) {
-      this.setState({
-        name: this.props.event.name,
-        description: this.props.event.description,
-        time: this.props.event.time,
-        participants: this.props.event.participants
-      })
-    }
-  }
-
   handleSubmit(e) {
     e.preventDefault()
 
@@ -71,7 +60,7 @@ class Geocode extends Component {
   render() {
     return (
       <div>
-        <h4> Set Location </h4>
+        <h4> Location </h4>
         <form onSubmit={e => this.handleSubmit(e)}>
           <p>
             <input

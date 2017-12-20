@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import EventList from "./EventList"
+
 import EventForm from "./EventForm"
 import { Switch, Route } from "react-router-dom"
 import Geocode from "./Geocode"
@@ -37,9 +37,16 @@ class Sidebar extends Component {
     })
   }
 
+  componentWillMount() {
+    if (this.props.currentEvent.position) {
+      this.setLocation(this.props.currentEvent.lat, this.props.currentEvent.lng)
+    }
+  }
+
   render() {
     return (
       <div>
+        <h4>{this.state.updateForm ? "Update Event" : "Create Event"}</h4>
         <Switch>
           <Route
             path="/modify-event"
@@ -48,26 +55,9 @@ class Sidebar extends Component {
                 <EventForm
                   updateForm={true}
                   position={this.state.position}
-                  handleChange={this.props.handleChange}
                   handleForm={this.props.editOneEvent}
                   toggleFalse={this.toggleFalse}
-                  event={this.props.currentEvent}
-                />
-              )
-            }}
-          />
-          <Route
-            path="/new-event"
-            render={props => {
-              return !this.state.location ? (
-                <Geocode setLocation={this.setLocation} />
-              ) : (
-                <EventForm
-                  updateForm={false}
-                  position={this.state.position}
-                  handleChange={this.props.handleChange}
-                  handleForm={this.props.makeNewEvent}
-                  toggleFalse={this.toggleFalse}
+                  currentEvent={this.props.currentEvent}
                 />
               )
             }}
@@ -75,7 +65,16 @@ class Sidebar extends Component {
           <Route
             path="/"
             render={props => {
-              return <EventList {...props} events={this.props.data} />
+              return !this.state.location ? (
+                <Geocode setLocation={this.setLocation} />
+              ) : (
+                <EventForm
+                  updateForm={false}
+                  position={this.state.position}
+                  handleForm={this.props.makeNewEvent}
+                  toggleFalse={this.toggleFalse}
+                />
+              )
             }}
           />
         </Switch>

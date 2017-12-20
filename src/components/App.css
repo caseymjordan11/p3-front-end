@@ -12,14 +12,14 @@
   margin-top: 30px;
 }
 
-.sidebar {
+/*.sidebar {
   margin-top: 75px;
   margin-left: 45px;
 }
 
 .leftSide{
   margin-top: 30px;
-}
+}*/
 
 .App-header {
   background-color: #222;
@@ -43,6 +43,10 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

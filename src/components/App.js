@@ -54,10 +54,7 @@ class App extends Component {
         description: description,
         position: position
       })
-      .then(res => {
-        this.handleChange(this.state.date)
-        // this.forceUpdate()
-      })
+      .then(res => {})
       .catch(err => {
         console.log(err)
       })
@@ -77,11 +74,7 @@ class App extends Component {
           position: position
         }
       )
-      .then(res => {
-        console.log(res)
-        this.handleChange(this.state.date)
-        // this.forceUpdate()
-      })
+      .then(res => {})
       .catch(err => {
         console.log(err)
       })
@@ -103,10 +96,7 @@ class App extends Component {
         `http://localhost:3001/api/${sendDate}/remove-event/${this.state
           .currentEvent._id}`
       )
-      .then(res => {
-        // this.handleChange(this.state.date)
-        // this.forceUpdate()
-      })
+      .then(res => {})
       .catch(err => {
         console.log(err)
       })
@@ -114,41 +104,36 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <div>
-          <NavItem />
-          <div className="App-column">
-            <div class ="leftSide">
-              <DatePicker
-                inline
-                selected={this.state.date}
-                onChange={this.handleChange}
-              />
-              <div class="sidebar">
+      <div>
+        <NavItem />
+        <div className="App-column">
+          <div className="leftSide">
+            <DatePicker
+              inline
+              selected={this.state.date}
+              onChange={this.handleChange}
+            />
+            <div className="sidebar">
               <Sidebar
-                list={this.state.list}
-                handleChange={this.handleChange}
                 makeNewEvent={this.makeNewEvent}
-                editNewEvent={this.editNewEvent}
+                editOneEvent={this.editOneEvent}
                 data={this.state.data}
                 currentEvent={this.state.currentEvent}
               />
-              </div>
-            </div>
-            <div>
-              <PigeonMap
-                data={this.state.data}
-                showOneEvent={this.showOneEvent}
-              />
             </div>
           </div>
-          <EventShow
-            event={this.state.currentEvent}
-            killOneEvent={this.killOneEvent}
-          />
+          <div>
+            <PigeonMap
+              data={this.state.data}
+              showOneEvent={this.showOneEvent}
+            />
+          </div>
         </div>
-        ) }}
-      </Switch>
+        <EventShow
+          event={this.state.currentEvent}
+          killOneEvent={this.killOneEvent}
+        />
+      </div>
     )
   }
 }

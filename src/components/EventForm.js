@@ -8,10 +8,14 @@ class EventForm extends Component {
     super(props)
 
     this.state = {
-      name: "name",
-      description: "description",
-      time: "time",
-      participants: []
+      name: "",
+      description: "",
+      time: "",
+      participants: [],
+      position: {
+        lat: "",
+        lng: ""
+      }
     }
 
     this.updateName = this.updateName.bind(this)
@@ -33,19 +37,20 @@ class EventForm extends Component {
   componentWillMount() {
     if (this.props.updateForm === true) {
       this.setState({
-        name: this.props.event.name,
-        description: this.props.event.description,
-        time: this.props.event.time,
-        participants: this.props.event.participants
+        name: this.props.currentEvent.name,
+        description: this.props.currentEvent.description,
+        time: this.props.currentEvent.time,
+        participants: this.props.currentEvent.participants,
+        position: { ...this.props.currentEvent.position }
       })
     }
-    console.log(this.props.event)
+    console.log(this.props.currentEvent)
   }
 
   render() {
     return (
       <div>
-        <h4>Create an Event</h4>
+        <h4> Details </h4>
         <form
           onSubmit={e => {
             e.preventDefault()
@@ -53,7 +58,7 @@ class EventForm extends Component {
             this.props.handleForm(
               this.state.name,
               this.state.description,
-              this.props.position
+              this.props.updateForm ? this.state.position : this.props.position
             )
           }}
         >

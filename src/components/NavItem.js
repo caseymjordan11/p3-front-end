@@ -1,48 +1,23 @@
-import React from "react"
+import React, {Component} from "react"
 import PropTypes from "prop-types"
 import { BrowserRouter as Router, Link, Route } from "react-router-dom"
+import './NavItem.css'
 
-const NavItem = ({}) => {
-  const navStyle = {
-    margin: "20px",
-    background: "rgb(143, 252, 118)",
-    borderBottom: "3px solid black",
-    width: "auto",
-    height: "75px"
-  }
-  const ulStyle = {
-    listStyleType: "none",
-    margin: "0",
-    padding: "0",
-    overflow: "hidden"
-  }
-  const liStyle = {
-    display: "block",
-    float: "left",
-    textAlign: "center",
-    fontSize: "30px",
-    padding: "8px",
-    borderRight: "1px solid #bbb"
-  }
-
+class NavItem extends Component{
+render(){
   return (
     <div>
-      <nav style={navStyle}>
-        <ul style={ulStyle}>
-          <li style={liStyle}>
-            <p>SocialFit</p>
-          </li>
-          <li style={liStyle}>
+      <nav>
+        <div class="nav">
             <Link to="/home">Home</Link>
-          </li>
-          <li style={liStyle}>
+            <p>SocialFit</p>
             <Link to="/new-event">New Event</Link>
-          </li>
-        </ul>
+        </div>
       </nav>
-      <Route path="/createEvent" />
+      <Route path="/createEvent"/>
     </div>
   )
+}
 }
 
 export default NavItem

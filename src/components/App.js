@@ -12,6 +12,7 @@ import NavItem from "./NavItem"
 import EventShow from "./EventShow"
 import Footer from "./Footer"
 
+
 class App extends Component {
   constructor(props) {
     super(props)

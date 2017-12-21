@@ -2,7 +2,7 @@ nav {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  font-family: Helvetica, sans-serif;
+  font-family: courier-header;
   font-size: 20px;
   background-color: lightgreen;
   margin-bottom: 20px;
@@ -28,4 +28,9 @@ a {
   padding-right: 100px;
   padding-top: 15px;
   text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  color: white;
 }

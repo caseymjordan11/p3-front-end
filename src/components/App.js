@@ -32,7 +32,7 @@ class App extends Component {
   handleChange(date) {
     let sendDate = `${date.month() + 1}-${date.date()}-${date.year()}`
     axios
-      .get(`http://localhost:3001/api/${sendDate}`)
+      .get(`https://socialfit-api.herokuapp.com/api/${sendDate}`)
       .then(res => {
         this.setState({
           date: date,
@@ -51,7 +51,7 @@ class App extends Component {
     let sendDate = `${this.state.date.month() +
       1}-${this.state.date.date()}-${this.state.date.year()}`
     axios
-      .post(`http://localhost:3001/api/${sendDate}/new-event`, {
+      .post(`https://socialfit-api.herokuapp.com/api/${sendDate}/new-event`, {
         name: name,
         description: description,
         position: position
@@ -71,7 +71,7 @@ class App extends Component {
 
     axios
       .put(
-        `http://localhost:3001/api/${sendDate}/modify-event/${this.state
+        `https://socialfit-api.herokuapp.com/api/${sendDate}/modify-event/${this.state
           .currentEvent._id}`,
         {
           name: name,
@@ -104,7 +104,7 @@ class App extends Component {
 
     axios
       .delete(
-        `http://localhost:3001/api/${sendDate}/remove-event/${this.state
+        `https://socialfit-api.herokuapp.com/api/${sendDate}/remove-event/${this.state
           .currentEvent._id}`
       )
       .then(res => {

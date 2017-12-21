@@ -10,6 +10,7 @@ import PigeonMap from "./PigeonMap"
 import Sidebar from "./Sidebar"
 import NavItem from "./NavItem"
 import EventShow from "./EventShow"
+import Footer from "./Footer"
 
 class App extends Component {
   constructor(props) {
@@ -79,8 +80,10 @@ class App extends Component {
       )
       .then(res => {
         console.log(res)
-        // this.handleChange(this.state.date)
-        // this.forceUpdate()
+        this.setState({
+          currentEvent: {}
+        })
+        res.redirect("/home")
       })
       .catch(err => {
         console.log(err)
@@ -104,8 +107,10 @@ class App extends Component {
           .currentEvent._id}`
       )
       .then(res => {
-        // this.handleChange(this.state.date)
-        // this.forceUpdate()
+        this.setState({
+          currentEvent: {}
+        })
+        this.forceUpdate()
       })
       .catch(err => {
         console.log(err)
@@ -115,7 +120,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <div>
+        <div class="App-body">
           <NavItem />
           <div className="App-column">
             <div class ="leftSide">
@@ -146,6 +151,7 @@ class App extends Component {
             event={this.state.currentEvent}
             killOneEvent={this.killOneEvent}
           />
+          <Footer />
         </div>
         ) }}
       </Switch>

@@ -17,6 +17,10 @@
   margin-left: 45px;
 }
 
+.App-body {
+  background-color: #e2e2e2 ;
+}
+
 .leftSide{
   margin-top: 30px;
 }

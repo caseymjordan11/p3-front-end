@@ -11,3 +11,9 @@ h3 {
   padding-bottom: 0px;
   font-size: 30px;
 }
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Map from "pigeon-maps"
 import Marker from "pigeon-marker"
+import './PigeonMap.css'
 
 class PigeonMap extends Component {
   constructor(props) {
